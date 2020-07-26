@@ -1,0 +1,55 @@
+
+
+<fieldset>
+<form name="regForm" novalidate ng-if="!regCtrl.success">
+
+	<input type="text" name="firstname" placeholder="First Name" style="color: #000"
+		ng-model="regCtrl.client.firstName"
+		required><br>
+	<span
+    ng-if="regForm.firstname.$error.required && regForm.firstname.$touched">
+    Field is required
+  </span><br>
+
+
+	<input type="text" name="lastname" placeholder="Last Name" style="color: #000"
+		ng-model="regCtrl.client.lastName"
+		required><br>
+	<span
+    ng-if="regForm.lastname.$error.required && regForm.lastname.$touched">
+    Field is required
+  </span><br>
+
+
+	<input type="email" name="email" placeholder="handle@domain" style="color: #000"
+		ng-model="regCtrl.client.email"
+		required><br>
+	<span
+    ng-if="regForm.email.$invalid && regForm.email.$touched">
+    Invalid email address. Required format: handle@domain
+  </span><br>
+
+
+	<input type="text" name="phone" placeholder="(###-###-####)" style="color: #000"
+		ng-model="regCtrl.client.phone"
+		required
+		pattern="(\d{3})-(\d{3})-(\d{4})"><br>
+	<span
+    ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+    Invalid phone number. Required format: ###-###-####
+  </span><br>
+
+	<label>Enter number of your favourite dish from menu. (For example: A1)</label><br>
+	<input type="" name="fav-dish" placeholder="Favourite Dish" style="color: #000"
+		ng-model="regCtrl.client.favDish"><br>
+	
+	<button
+		ng-disabled="regForm.$invalid"
+		ng-click="regCtrl.submit()">Submit</button>
+
+
+</form></fieldset>
+
+<span ng-if="regCtrl.success">
+	{{ regCtrl.savedMessage }}
+</span>
